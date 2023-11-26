@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>760</width>
+    <height>770</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>760</width>
+    <height>770</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>770</width>
+    <height>780</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="main_menu">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>760</width>
+      <height>770</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page_themes">
+     <widget class="QTabWidget" name="main_tab_widget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>771</width>
+        <height>770</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabBar::tab {
+	height: 50px; 
+	width: 253px; 
+	background: rgb(64,66,115);
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+}
+QTabBar::tab:selected {
+	background: rgb(50, 52, 91);
+}</string>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="learning_tab">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background: rgb(36,39,70);
+}</string>
+       </property>
+       <attribute name="title">
+        <string>Обучение</string>
+       </attribute>
+       <widget class="QFrame" name="hp_coins_theme">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>761</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background: rgb(51,54,97);
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QPushButton" name="choose_theme">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>80</y>
+           <width>711</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: white;
+	background: rgb(64,66,115);
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Python</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="hp_btn">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>341</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: white;
+	background: rgb(64,66,115);
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Hp</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="coins_btn">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>20</y>
+           <width>331</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: white;
+	background: rgb(64,66,115);
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Coins</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>130</y>
+          <width>761</width>
+          <height>591</height>
+         </rect>
+        </property>
+        <widget class="QWidget" name="page">
+         <widget class="QProgressBar" name="progress_basics_part1">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>60</y>
+            <width>761</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QProgressBar {
+	border: 2px solid rgb(105,84,179);
+	background: rgb(105,84,179);
+	border-radius: 5px;
+	text-align: center;
+}
+QProgressBar::chunk {
+	background: rgb(164,113,240);
+}</string>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+          <property name="format">
+           <string notr="true"/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>20</y>
+            <width>761</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+	color: white;
+	background: rgb(25,27,50);
+	font-weight: bold;
+	font-size: 16px;
+	border: 2px solid rgb(52,54,95);
+}</string>
+          </property>
+          <property name="text">
+           <string>Основы Python часть 1</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>190</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(64,66,115);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Создание переменных</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>280</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Работа с числами</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>370</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Условные операторы</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_4">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>460</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Циклы</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_2"/>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="sandbox_tab">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background: rgb(36,39,70);
+}</string>
+       </property>
+       <attribute name="title">
+        <string>Песочница</string>
+       </attribute>
+       <widget class="QFrame" name="buttons_menu">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>761</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background: rgb(51,54,97);
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QPushButton" name="open_btn">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: white;
+	background: rgb(64,66,115);
+	font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>Open</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="save_btn">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>20</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: white;
+	background: rgb(64,66,115);
+	font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>Save</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="run_btn">
+         <property name="geometry">
+          <rect>
+           <x>640</x>
+           <y>20</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: rgb(170, 255, 0);
+	background:  rgb(64,66,115);
+	font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>Run</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPlainTextEdit" name="text_edit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>60</y>
+          <width>761</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPlainTextEdit {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="console_menu">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>420</y>
+          <width>761</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+	background: rgb(51,54,97);
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="label_2">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>7</y>
+           <width>55</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>console</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPlainTextEdit" name="output_edit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>450</y>
+          <width>761</width>
+          <height>271</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="profile_tab">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+	background: rgb(36,39,70);
+}</string>
+       </property>
+       <attribute name="title">
+        <string>Профиль</string>
+       </attribute>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_tasks"/>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
