@@ -63,110 +63,110 @@ class MyWidget(QMainWindow):
         self.run_btn.clicked.connect(self.run_code)
         self.open_btn.clicked.connect(self.open_file)
         self.save_btn.clicked.connect(self.save_file)
-        # self.exit_btn.clicked.connect(self.exit_btn_pressed)
+        self.exit_btn.clicked.connect(self.exit_btn_pressed)
 
-    # def choose_theme(self):
-    #     text = self.sender().text()
-    #     if self.check_hp():
-    #         if text == 'Создание переменных':
-    #             self.main_windows.setCurrentIndex(1)
-    #             self.page_task.setCurrentIndex(0)
-    #             self.cur_num_main_window = 0
-    #     else:
-    #         pass
-    #         # TODO: добавить окно которое говорит о том что надо подождать
-    #
-    # def next_page_createvar(self):
-    #     self.page_task.setCurrentIndex(self.page_task.currentIndex() + 1)
-    #     # self.progress_tasks.setValue(self.progress_createvar_1.value() + 12)
-    #
-    # def main_window(self):
-    #     self.main_windows.setCurrentIndex(0)
-    #
-    # def change_size(self):
-    #     res = self.sender()
-    #     text_width = QFontMetrics(res.font()).width(res.text())
-    #     new_width = text_width + 10
-    #     res.setFixedWidth(new_width)
-    #
-    # def check_answer_createvar_1(self):
-    #     if self.res_createvar_1.text() == 'city':
-    #         self.check_createvar_1.setText('Продолжить')
-    #         self.check_createvar_1.clicked.connect(self.next_page_createvar)
-    #     else:
-    #         self.check_first_miss()
-    #         self.count_heart -= 1
-    #         self.mistakes += 1
-    #         self.update_data()
-    #
-    # def check_answer_createvar_2(self):
-    #     if self.res_createvar_2.text() == '"Porsche"':
-    #         self.check_createvar_2.setText('Продолжить')
-    #         self.check_createvar_2.clicked.connect(self.next_page_createvar)
-    #     else:
-    #         self.check_first_miss()
-    #         self.count_heart -= 1
-    #         self.mistakes += 1
-    #         self.update_data()
-    #
-    # def check_answer_createvar_3(self):
-    #     if self.res_createvar_3.text() == '=':
-    #         self.check_createvar_3.setText('Продолжить')
-    #         self.check_createvar_3.clicked.connect(self.next_page_createvar)
-    #     else:
-    #         self.check_first_miss()
-    #         self.count_heart -= 1
-    #         self.mistakes += 1
-    #         self.update_data()
-    #
-    # def check_answer_createvar_4(self):
-    #     if (self.res_createvar_4.text() == 'step_1 = "step"' and self.res_createvar_5.text() == 'step_2 = "by"'
-    #             and self.res_createvar_6.text() == 'step_3 = "step"'):
-    #         self.check_createvar_4.setText('Продолжить')
-    #         self.check_createvar_4.clicked.connect(self.next_page_createvar)
-    #     else:
-    #         self.check_first_miss()
-    #         self.count_heart -= 1
-    #         self.mistakes += 1
-    #         self.update_data()
-    #
-    # def check_answer_createvar_5(self):
-    #     self.check_createvar_5.setText('Продолжить')
-    #     self.check_createvar_5.clicked.connect(self.next_page_createvar)
-    #     self.frame_19.setHidden(False)
-    #     self.correct_answer()
-    #
-    # def check_answer_createvar_6(self):
-    #     if self.res_createvar_9.text() == 'print("GO!")':
-    #         self.check_createvar_6.setText('Продолжить')
-    #         self.check_createvar_6.clicked.connect(self.next_page_createvar)
-    #         self.frame_22.setHidden(False)
-    #     else:
-    #         self.check_first_miss()
-    #         self.count_heart -= 1
-    #         self.mistakes += 1
-    #         self.update_data()
-    #
-    # def check_answer_createvar_7(self):
-    #     if self.res_createvar_11.text() == 'print(greeting)':
-    #         self.check_createvar_7.setText('Завершить')
-    #         self.check_createvar_7.clicked.connect(self.exit)
-    #         self.xp += 100
-    #     else:
-    #         self.check_first_miss()
-    #         self.count_heart -= 1
-    #         self.mistakes += 1
-    #         self.update_data()
+    def choose_theme(self):
+        text = self.sender().text()
+        if self.check_hp():
+            if text == 'Создание переменных':
+                self.main_windows.setCurrentIndex(1)
+                self.page_task.setCurrentIndex(0)
+                self.cur_num_main_window = 0
+        else:
+            pass
+            # TODO: добавить окно которое говорит о том что надо подождать
 
-    # def check_first_miss(self):
-    #     if not self.first_miss:
-    #         self.first_miss = True
-    #         self.dialog = FirstMiss(self)
-    #         self.dialog.exec_()
-    #
-    # def get_info_pep8(self):
-    #     self.dialog = InfoPEP8(self)
-    #     self.dialog.exec_()
+    def next_page_createvar(self):
+        self.page_task.setCurrentIndex(self.page_task.currentIndex() + 1)
+        # self.progress_tasks.setValue(self.progress_createvar_1.value() + 12)
+
+    def main_window(self):
+        self.main_windows.setCurrentIndex(0)
+
+    def change_size(self):
+        res = self.sender()
+        text_width = QFontMetrics(res.font()).width(res.text())
+        new_width = text_width + 10
+        res.setFixedWidth(new_width)
+
+    def check_answer_createvar_1(self):
+        if self.res_createvar_1.text() == 'city':
+            self.check_createvar_1.setText('Продолжить')
+            self.check_createvar_1.clicked.connect(self.next_page_createvar)
+        else:
+            self.check_first_miss()
+            self.count_heart -= 1
+            self.mistakes += 1
+            self.update_data()
+
+    def check_answer_createvar_2(self):
+        if self.res_createvar_2.text() == '"Porsche"':
+            self.check_createvar_2.setText('Продолжить')
+            self.check_createvar_2.clicked.connect(self.next_page_createvar)
+        else:
+            self.check_first_miss()
+            self.count_heart -= 1
+            self.mistakes += 1
+            self.update_data()
+
+    def check_answer_createvar_3(self):
+        if self.res_createvar_3.text() == '=':
+            self.check_createvar_3.setText('Продолжить')
+            self.check_createvar_3.clicked.connect(self.next_page_createvar)
+        else:
+            self.check_first_miss()
+            self.count_heart -= 1
+            self.mistakes += 1
+            self.update_data()
+
+    def check_answer_createvar_4(self):
+        if (self.res_createvar_4.text() == 'step_1 = "step"' and self.res_createvar_5.text() == 'step_2 = "by"'
+                and self.res_createvar_6.text() == 'step_3 = "step"'):
+            self.check_createvar_4.setText('Продолжить')
+            self.check_createvar_4.clicked.connect(self.next_page_createvar)
+        else:
+            self.check_first_miss()
+            self.count_heart -= 1
+            self.mistakes += 1
+            self.update_data()
+
+    def check_answer_createvar_5(self):
+        self.check_createvar_5.setText('Продолжить')
+        self.check_createvar_5.clicked.connect(self.next_page_createvar)
+        self.frame_19.setHidden(False)
+        self.correct_answer()
+
+    def check_answer_createvar_6(self):
+        if self.res_createvar_9.text() == 'print("GO!")':
+            self.check_createvar_6.setText('Продолжить')
+            self.check_createvar_6.clicked.connect(self.next_page_createvar)
+            self.frame_22.setHidden(False)
+        else:
+            self.check_first_miss()
+            self.count_heart -= 1
+            self.mistakes += 1
+            self.update_data()
+
+    def check_answer_createvar_7(self):
+        if self.res_createvar_11.text() == 'print(greeting)':
+            self.check_createvar_7.setText('Завершить')
+            self.check_createvar_7.clicked.connect(self.exit)
+            self.xp += 100
+        else:
+            self.check_first_miss()
+            self.count_heart -= 1
+            self.mistakes += 1
+            self.update_data()
+
+    def check_first_miss(self):
+        if not self.first_miss:
+            self.first_miss = True
+            self.dialog = FirstMiss(self)
+            self.dialog.exec_()
+
+    def get_info_pep8(self):
+        self.dialog = InfoPEP8(self)
+        self.dialog.exec_()
 
     def run_code(self):
         code = self.text_edit.toPlainText()
@@ -200,17 +200,17 @@ class MyWidget(QMainWindow):
         if reply == QMessageBox.Yes:
             self.main_window()
 
-    # def exit(self):
-    #     congratulation = Congratulation()
-    #     congratulation.exec_()
-    #     self.main_window()
-    #     self.xp += 100
-    #     self.coins += 10
-    #     self.update_data()
-    #
-    # def update_data(self):
-    #     self.hp_btn.setText(f'💖 {self.count_heart}')
-    #     self.hp_text.setText(' 💖' * self.count_heart)
+    def exit(self):
+        congratulation = Congratulation()
+        congratulation.exec_()
+        self.main_window()
+        self.xp += 100
+        self.coins += 10
+        self.update_data()
+
+    def update_data(self):
+        self.hp_btn.setText(f'💖 {self.count_heart}')
+        self.hp_text.setText(' 💖' * self.count_heart)
 
     def check_hp(self):
         return bool(self.count_heart)

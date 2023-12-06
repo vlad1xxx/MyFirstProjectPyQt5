@@ -140,7 +140,7 @@ QTabBar::tab:selected {
 }</string>
          </property>
          <property name="text">
-          <string>Hp</string>
+          <string/>
          </property>
         </widget>
         <widget class="QPushButton" name="coins_btn">
@@ -162,7 +162,7 @@ QTabBar::tab:selected {
 }</string>
          </property>
          <property name="text">
-          <string>Coins</string>
+          <string/>
          </property>
         </widget>
        </widget>
@@ -175,12 +175,15 @@ QTabBar::tab:selected {
           <height>591</height>
          </rect>
         </property>
-        <widget class="QWidget" name="page">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page_basics_py_part1">
          <widget class="QProgressBar" name="progress_basics_part1">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>60</y>
+            <y>40</y>
             <width>761</width>
             <height>20</height>
            </rect>
@@ -210,7 +213,7 @@ QProgressBar::chunk {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>20</y>
+            <y>0</y>
             <width>761</width>
             <height>41</height>
            </rect>
@@ -253,7 +256,7 @@ QProgressBar::chunk {
            <string>Создание переменных</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="createvar_btn_2">
+         <widget class="QPushButton" name="num_btn">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -278,7 +281,7 @@ QProgressBar::chunk {
            <string>Работа с числами</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="createvar_btn_3">
+         <widget class="QPushButton" name="condition_btn">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -303,7 +306,7 @@ QProgressBar::chunk {
            <string>Условные операторы</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="createvar_btn_4">
+         <widget class="QPushButton" name="loop_btn">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -329,7 +332,320 @@ QProgressBar::chunk {
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="page_2"/>
+        <widget class="QWidget" name="page_basics_py_part2">
+         <widget class="QPushButton" name="createvar_btn_5">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>190</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Работа со строками</string>
+          </property>
+         </widget>
+         <widget class="QProgressBar" name="progress_basics_part1_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>40</y>
+            <width>761</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QProgressBar {
+	border: 2px solid rgb(105,84,179);
+	background: rgb(105,84,179);
+	border-radius: 5px;
+	text-align: center;
+}
+QProgressBar::chunk {
+	background: rgb(164,113,240);
+}</string>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+          <property name="format">
+           <string notr="true"/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_6">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>370</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Списки</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_7">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>280</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Множества</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>761</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+	color: white;
+	background: rgb(25,27,50);
+	font-weight: bold;
+	font-size: 16px;
+	border: 2px solid rgb(52,54,95);
+}</string>
+          </property>
+          <property name="text">
+           <string>Основы Python часть 2</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_8">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>460</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Словари и кортежи</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page">
+         <widget class="QPushButton" name="createvar_btn_9">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>280</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Начало ООП</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>761</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+	color: white;
+	background: rgb(25,27,50);
+	font-weight: bold;
+	font-size: 16px;
+	border: 2px solid rgb(52,54,95);
+}</string>
+          </property>
+          <property name="text">
+           <string>Основы Python часть 3</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_10">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>460</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>ООП. Наследование</string>
+          </property>
+         </widget>
+         <widget class="QProgressBar" name="progress_basics_part1_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>40</y>
+            <width>761</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QProgressBar {
+	border: 2px solid rgb(105,84,179);
+	background: rgb(105,84,179);
+	border-radius: 5px;
+	text-align: center;
+}
+QProgressBar::chunk {
+	background: rgb(164,113,240);
+}</string>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+          <property name="format">
+           <string notr="true"/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_11">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>190</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Функции</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="createvar_btn_12">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>370</y>
+            <width>701</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color: white;
+	background: rgb(49, 51, 88);
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+          </property>
+          <property name="text">
+           <string> ООП. Определение операторов</string>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="sandbox_tab">
