@@ -158,15 +158,15 @@ class MyWidget(QMainWindow):
             self.mistakes += 1
             self.update_data()
 
-    def check_first_miss(self):
-        if not self.first_miss:
-            self.first_miss = True
-            self.dialog = FirstMiss(self)
-            self.dialog.exec_()
-
-    def get_info_pep8(self):
-        self.dialog = InfoPEP8(self)
-        self.dialog.exec_()
+    # def check_first_miss(self):
+    #     if not self.first_miss:
+    #         self.first_miss = True
+    #         self.dialog = FirstMiss(self)
+    #         self.dialog.exec_()
+    #
+    # def get_info_pep8(self):
+    #     self.dialog = InfoPEP8(self)
+    #     self.dialog.exec_()
 
     def run_code(self):
         code = self.text_edit.toPlainText()
@@ -200,13 +200,13 @@ class MyWidget(QMainWindow):
         if reply == QMessageBox.Yes:
             self.main_window()
 
-    def exit(self):
-        congratulation = Congratulation()
-        congratulation.exec_()
-        self.main_window()
-        self.xp += 100
-        self.coins += 10
-        self.update_data()
+    # def exit(self):
+    #     congratulation = Congratulation()
+    #     congratulation.exec_()
+    #     self.main_window()
+    #     self.xp += 100
+    #     self.coins += 10
+    #     self.update_data()
 
     def update_data(self):
         self.hp_btn.setText(f'💖 {self.count_heart}')
