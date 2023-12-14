@@ -69,7 +69,8 @@ class RegistrationForm(QDialog):
             conn.commit()
             conn.close()
 
-            self.parent.name_surname.setText(self.input_name.text() + ' ' + self.input_surname.text())
+            self.parent.name.setText(self.input_name.text())
+            self.parent.surname.setText(self.input_surname.text())
             self.parent.profile_menu.setCurrentIndex(1)
             self.close()
 
@@ -103,14 +104,21 @@ class EnterForm(QDialog):
             conn.close()
             self.parent.name.setText(res[0][1])
             self.parent.surname.setText(res[0][2])
-            self.parent.xp_count.setText(str(res[0][7]) + 'xp')
-            self.parent.errors_count.setText(str(res[0][8]))
+            self.parent.xp = res[0][7]
+            self.parent.errors = res[0][8]
             self.parent.count_heart = res[0][5]
             self.parent.coins = res[0][6]
             if bool(res[0][9]):
                 self.parent.open_num_btn()
+            if bool(res[0][10]):
+                self.parent.open_cond_btn()
+            if bool(res[0][11]):
+                self.parent.open_loop_btn()
             self.parent.cond_btn.setEnabled(bool(res[0][10]))
+            self.parent.update_data()
             self.parent.profile_menu.setCurrentIndex(1)
+            if self.parent.count_heart < 5:
+                self.parent.update_hp_timer()
             self.close()
         else:
             self.error_text.setText('Неверный логин или пароль')
