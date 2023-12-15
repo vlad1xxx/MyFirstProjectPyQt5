@@ -3,7 +3,7 @@ import sys
 import sqlite3
 from datetime import datetime
 from io import StringIO
-from dialogs import RegistrationForm, EnterForm
+from dialogs import RegistrationForm, EnterForm, ChooseThemeForm
 
 from PyQt5 import uic
 from PyQt5.QtCore import QTimer
@@ -44,7 +44,6 @@ class MyWidget(QMainWindow):
             self.id = res[0][0]
         conn.commit()
         conn.close()
-        print(res)
         self.name_object = None
         self.first_miss = True
         self.is_low_five_hp = False
@@ -73,6 +72,7 @@ class MyWidget(QMainWindow):
         self.answer_edit_loop_2.textChanged.connect(self.change_size)
         self.answer_edit_loop_4.textChanged.connect(self.change_size)
 
+        self.choose_theme.clicked.connect(self.choose_py_theme)
         self.create_profile_btn.clicked.connect(self.registration)
         self.enter_btn.clicked.connect(self.enter)
         self.exit_from_account.clicked.connect(self.exit_account)
@@ -621,51 +621,45 @@ class MyWidget(QMainWindow):
         self.coins_btn.setText(f'💰 {self.coins}')
         self.xp_count.setText(f'{self.xp} xp')
         self.errors_count.setText(f'{self.errors} miss')
-        if db_update:
-            conn = sqlite3.connect('data.db')
-            cursor = conn.cursor()
-            cursor.execute(f'''
-                                        UPDATE users SET heart = ?, coins = ?, xp = ?, errors = ? WHERE id = ?
-                                    ''', [self.count_heart, self.coins, self.xp, self.errors, self.id])
-            conn.commit()
-            conn.close()
+        try:
+            if db_update:
+                conn = sqlite3.connect('data.db')
+                cursor = conn.cursor()
+                cursor.execute(f'''
+                                            UPDATE users SET heart = ?, coins = ?, xp = ?, errors = ? WHERE id = ?
+                                        ''', [self.count_heart, self.coins, self.xp, self.errors, self.id])
+                conn.commit()
+                conn.close()
+        except sqlite3.OperationalError:
+            pass
 
     # Проверяем не равно ли значение жизней нулю
     def check_hp(self):
         return bool(self.count_heart)
 
-    # def update_hp(self):
-    #     last_time_str = None
-    #     try:
-    #         with open('last_update_time.json', 'r') as file:
-    #             last_time_str = json.load(file)['last_update_time']
-    #     except FileNotFoundError:
-    #         self.update_time()
-    #     if last_time_str is not None:
-    #         if isinstance(last_time_str, (float, int)):
-    #             last_time = datetime.fromtimestamp(last_time_str)
-    #         else:
-    #             last_time = datetime.strptime(last_time_str, '%Y-%m-%d %H:%M:%S.%f')
-    #
-    #         time_difference = datetime.now() - last_time
-    #         elapsed_minutes = time_difference.total_seconds() / 60
-    #
-    #         if elapsed_minutes + self.count_heart > 5:
-    #             self.count_heart = 5
-    #         else:
-    #             self.count_heart += elapsed_minutes
-    #         self.update_time()
-    #
-    #         # Обновление времени
-    #         new_time = datetime.now()
-    #         data = {'last_update_time': new_time.timestamp()}
-    #         with open('last_update_time.json', 'w') as file:
-    #             json.dump(data, file, indent=2)
+    def update_hp(self):
+        conn = sqlite3.connect('data.db')
+        cur = conn.cursor()
+        last_time_str = cur.execute('''
+            SELECT last_enter_time FROM users WHERE id = ?
+        ''', [self.id]).fetchone()[0]
+        print(last_time_str)
+        last_time = datetime.fromtimestamp(last_time_str)
 
-    # def update_time(self):
-    #     data = {'last_update_time': datetime.now().timestamp()}
-    #     with open('last_update_time.json', 'w') as file:
-    #         json.dump(data, file, indent=2)
+        time_difference = datetime.now() - last_time
+        elapsed_minutes = time_difference.total_seconds() / 60 / 60
+
+        if elapsed_minutes + self.count_heart >= 5:
+            self.count_heart = 5
+        else:
+            self.count_heart += int(elapsed_minutes)
+
+        # Обновление времени
+        cur.execute('''
+                    UPDATE users SET last_enter_time = ? WHERE id = ?
+                ''', [datetime.now().timestamp(), self.id])
+        conn.commit()
+        conn.close()
 
     def start_progress_bar(self):
         self.timer = QTimer(self)
@@ -685,7 +679,7 @@ class MyWidget(QMainWindow):
 
     def update_hp_timer(self):
         self.timer_hp = QTimer(self)
-        self.timer_hp.singleShot(1000, self.update_count_hp)
+        self.timer_hp.singleShot(100000, self.update_count_hp)
 
     def update_count_hp(self):
         if self.count_heart < 5:
@@ -701,6 +695,10 @@ class MyWidget(QMainWindow):
         form = EnterForm(self)
         form.exec_()
 
+    def choose_py_theme(self):
+        form = ChooseThemeForm(self)
+        form.exec_()
+
     def set_data(self):
         self.profile_menu.setCurrentIndex(1)
         conn = sqlite3.connect('data.db')
@@ -708,12 +706,15 @@ class MyWidget(QMainWindow):
         res = cur.execute('''
             SELECT * FROM users WHERE id = ?
         ''', [self.id]).fetchall()
+        conn.commit()
+        conn.close()
         self.name.setText(res[0][1])
         self.surname.setText(res[0][2])
         self.xp_count.setText(str(res[0][7]) + 'xp')
         self.errors_count.setText(str(res[0][8]))
         self.count_heart = res[0][5]
         if self.count_heart < 5:
+            self.update_hp()
             self.update_hp_timer()
         self.coins = res[0][6]
         self.xp = res[0][7]
@@ -725,6 +726,8 @@ class MyWidget(QMainWindow):
             self.open_cond_btn()
         if bool(res[0][11]):
             self.open_loop_btn()
+        if bool(res[0][12]):
+            self.open_str_btn()
 
     def exit_account(self):
         conn = sqlite3.connect('data.db')
@@ -759,7 +762,6 @@ class MyWidget(QMainWindow):
                         ''')
         self.progress_basics_part1.setValue(0)
         self.progress_basics_part2.setValue(0)
-        self.progress_basics_part3.setValue(0)
         self.count_heart = 5
         self.xp = 0
         self.coins = 0

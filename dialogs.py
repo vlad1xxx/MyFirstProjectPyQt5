@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLineEdit, QLabel, QDialog
@@ -34,25 +35,28 @@ class RegistrationForm(QDialog):
                     "first_name"	TEXT,
                     "last_name"	TEXT,
                     "username"	TEXT,
-                    "password"	TEXT DEFAULT 0,
+                    "password"	TEXT,
                     "heart" INTEGER DEFAULT 5,
                     "coins" INTEGER DEFAULT 0,
                     "xp"    INTEGER DEFAULT 0,
                     "errors"    INTEGER DEFAULT 0,
-                    "num_btn"	INTEGER DEFAULT 0,
-                    "cond_btn"	INTEGER DEFAULT 0,
-                    "loop_btn"	INTEGER DEFAULT 0,
-                    "str_btn"	INTEGER DEFAULT 0,
-                    "set_btn"	INTEGER DEFAULT 0,
-                    "list_btn"	INTEGER DEFAULT 0,
-                    "dict_and_tuple_btn"	INTEGER DEFAULT 0,
-                    "func_btn"	INTEGER DEFAULT 0,
-                    "start_oop_btn"	INTEGER DEFAULT 0,
-                    "oop_part2_btn"	INTEGER DEFAULT 0,
-                    "oop_part3_btn"	INTEGER DEFAULT 0
+                    "num_btn"	INTEGER DEFAULT 1,
+                    "cond_btn"	INTEGER DEFAULT 1,
+                    "loop_btn"	INTEGER DEFAULT 1,
+                    "str_btn"	INTEGER DEFAULT 1,
+                    "set_btn"	INTEGER DEFAULT 1,
+                    "list_btn"	INTEGER DEFAULT 1,
+                    "dict_and_tuple_btn"	INTEGER DEFAULT 1,
+                    "func_btn"	INTEGER DEFAULT 1,
+                    "start_oop_btn"	INTEGER DEFAULT 1,
+                    "oop_part2_btn"	INTEGER DEFAULT 1,
+                    "oop_part3_btn"	INTEGER DEFAULT 1,
+                    "last_enter_time" INTEGER
                 )
             ''')
-
+            cursor.execute("""
+                UPDATE users SET last_enter_time = ?
+            """, [datetime.now().timestamp()])
             data = [self.input_name.text(), self.input_surname.text(),
                     self.input_login.text(), self.input_password.text()]
             cursor.execute('''
@@ -100,6 +104,9 @@ class EnterForm(QDialog):
             cursor.execute('''
                             UPDATE last_enter SET id = ?
                         ''', [self.parent.id])
+            cursor.execute('''
+                UPDATE users SET last_enter_time = ? WHERE id = ?
+            ''', [datetime.now().timestamp(), self.parent.id])
             conn.commit()
             conn.close()
             self.parent.name.setText(res[0][1])
@@ -114,6 +121,8 @@ class EnterForm(QDialog):
                 self.parent.open_cond_btn()
             if bool(res[0][11]):
                 self.parent.open_loop_btn()
+            if bool(res[0][12]):
+                self.parent.open_str_btn()
             self.parent.cond_btn.setEnabled(bool(res[0][10]))
             self.parent.update_data()
             self.parent.profile_menu.setCurrentIndex(1)
@@ -123,5 +132,24 @@ class EnterForm(QDialog):
         else:
             self.error_text.setText('Неверный логин или пароль')
 
+
+class ChooseThemeForm(QDialog):
+    def __init__(self, parent):
+        super().__init__()
+        uic.loadUi('choose_theme_form.ui', self)
+        self.initUi()
+        self.parent = parent
+
+    def initUi(self):
+        self.py_part_1_btn.clicked.connect(self.choose_py_theme)
+        self.py_part_2_btn.clicked.connect(self.choose_py_theme)
+
+    def choose_py_theme(self):
+        btn_text = self.sender().text()
+        if btn_text == 'Основы Python часть 1':
+            self.parent.stacked_themes.setCurrentIndex(0)
+        elif btn_text == 'Основы Python часть 2':
+            self.parent.stacked_themes.setCurrentIndex(1)
+        self.close()
 
 
