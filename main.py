@@ -22,11 +22,25 @@ class PythonExecutor:
             return output_buffer.getvalue()
 
 
-class MyWidget(QMainWindow):
+class Mimo(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('project.ui', self)
         self.id = None
+        self.init_database()
+        self.name_object = None
+        self.first_miss = True
+        self.is_low_five_hp = False
+        self.count_heart = 5
+        self.errors = 0
+        self.xp = 0
+        self.coins = 0
+        if self.id != 0:
+            self.set_data()
+        self.initUI()
+
+    # Создает дб, для отслеживания последнего вошедшего пользователя
+    def init_database(self):
         conn = sqlite3.connect('data.db')
         cur = conn.cursor()
         cur.execute('''
@@ -44,34 +58,33 @@ class MyWidget(QMainWindow):
             self.id = res[0][0]
         conn.commit()
         conn.close()
-        self.name_object = None
-        self.first_miss = True
-        self.is_low_five_hp = False
-        self.count_heart = 5
-        self.errors = 0
-        self.xp = 0
-        self.coins = 0
-        if self.id != 0:
-            self.set_data()
-        self.initUI()
 
     def initUI(self):
         self.update_data()
-        self.createvar_btn.clicked.connect(self.choose_themes)
-        self.num_btn.clicked.connect(self.choose_themes)
-        self.cond_btn.clicked.connect(self.choose_themes)
-        self.loop_btn.clicked.connect(self.choose_themes)
+        self.connect_buttons()
+        self.connect_text_changed_signals()
+        self.connect_click_events()
+        self.setup_restart_functions()
         self.continue_createvar_btn_1.clicked.connect(self.next_page_createvar)
         self.continue_createvar_btn_2.clicked.connect(self.next_page_createvar)
         self.continue_createvar_btn_3.clicked.connect(self.next_page_createvar)
-        self.continue_cond_btn_1.clicked.connect(self.next_page_cond)
-        self.answer_edit_createvar_1.textChanged.connect(self.change_size)
-        self.answer_edit_cond_2.textChanged.connect(self.change_size)
-        self.answer_edit_num_6.textChanged.connect(self.change_size)
-        self.answer_edit_cond_7.textChanged.connect(self.change_size)
-        self.answer_edit_loop_2.textChanged.connect(self.change_size)
-        self.answer_edit_loop_4.textChanged.connect(self.change_size)
 
+    def connect_buttons(self):
+        buttons = [
+            self.createvar_btn, self.num_btn, self.cond_btn, self.loop_btn,
+        ]
+        for button in buttons:
+            button.clicked.connect(self.choose_themes)
+
+    def connect_text_changed_signals(self):
+        text_edits = [
+            self.answer_edit_createvar_1, self.answer_edit_cond_2, self.answer_edit_num_6,
+            self.answer_edit_cond_7, self.answer_edit_loop_2, self.answer_edit_loop_4
+        ]
+        for text_edit in text_edits:
+            text_edit.textChanged.connect(self.change_size)
+
+    def connect_click_events(self):
         self.choose_theme.clicked.connect(self.choose_py_theme)
         self.create_profile_btn.clicked.connect(self.registration)
         self.enter_btn.clicked.connect(self.enter)
@@ -80,31 +93,28 @@ class MyWidget(QMainWindow):
         self.open_btn.clicked.connect(self.open_file)
         self.save_btn.clicked.connect(self.save_file)
         self.exit_btn.clicked.connect(self.exit_btn_pressed)
+
+    def setup_restart_functions(self):
         self.restart_createvar()
         self.restart_num()
         self.restart_cond()
         self.restart_loop()
 
+    # Переход на урок, на который нажал пользователь
     def choose_themes(self):
         text = self.sender().text()
         if self.check_hp():
-            if text == 'Создание переменных':
-                self.main_menu.setCurrentIndex(1)
-                self.themes.setCurrentIndex(0)
-                self.tasks_createvar.setCurrentIndex(0)
-            elif text == 'Работа с числами':
-                self.main_menu.setCurrentIndex(1)
-                self.themes.setCurrentIndex(1)
-                self.tasks_num.setCurrentIndex(0)
-            elif text == 'Условные операторы':
-                self.main_menu.setCurrentIndex(1)
-                self.themes.setCurrentIndex(2)
-                self.tasks_cond.setCurrentIndex(0)
-            elif text == 'Циклы':
-                self.main_menu.setCurrentIndex(1)
-                self.themes.setCurrentIndex(3)
-                self.tasks_loop.setCurrentIndex(0)
+            themes_mapping = {
+                'Создание переменных': (0, self.tasks_createvar, 0),
+                'Работа с числами': (1, self.tasks_num, 0),
+                'Условные операторы': (2, self.tasks_cond, 0),
+                'Циклы': (3, self.tasks_loop, 0),
+            }
+            self.main_menu.setCurrentIndex(1)
+            self.themes.setCurrentIndex(themes_mapping[text][0])
+            themes_mapping[text][1].setCurrentIndex(themes_mapping[text][2])
 
+    # Переключение страниц
     def next_page_createvar(self):
         self.tasks_createvar.setCurrentIndex(self.tasks_createvar.currentIndex() + 1)
 
@@ -117,12 +127,14 @@ class MyWidget(QMainWindow):
     def next_page_loop(self):
         self.tasks_loop.setCurrentIndex(self.tasks_loop.currentIndex() + 1)
 
+    # Изменение размера QLineEdit
     def change_size(self):
         res = self.sender()
         text_width = QFontMetrics(res.font()).width(res.text())
         new_width = text_width + 10
         res.setFixedWidth(new_width)
 
+    # Проверка ответа
     def check_answer_createvar_1(self):
         if (self.answer_edit_createvar_1.text() == 'car = "Porsche"'
                 or self.answer_edit_createvar_1.text() == "car = 'Porsche'"):
@@ -140,6 +152,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_createvar_2(self):
         self.continue_createvar_btn_5.setText('Продолжить')
         self.continue_createvar_btn_5.clicked.connect(self.next_page_createvar)
@@ -149,6 +162,7 @@ class MyWidget(QMainWindow):
         self.name_object = self.progress_createvar_2
         self.start_progress_bar()
 
+    # Проверка ответа
     def check_answer_createvar_3(self):
         if self.answer_edit_createvar_4.toPlainText() == 'name = "Hello, Qt!"\nprint(name)' \
                 or self.answer_edit_createvar_4.toPlainText() == "name = 'Hello, Qt!'\nprint(name)":
@@ -167,6 +181,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Восстановление урока "Создание переменных" в начальное состояние
     def restart_createvar(self):
         self.main_menu.setCurrentIndex(0)
         self.continue_createvar_btn_6.disconnect()
@@ -187,6 +202,7 @@ class MyWidget(QMainWindow):
         self.continue_createvar_btn_5.clicked.connect(self.check_answer_createvar_2)
         self.continue_createvar_btn_6.clicked.connect(self.check_answer_createvar_3)
 
+    # Проверка ответа
     def check_answer_num_1(self):
         if self.answer_edit_num_1.text() == '5':
             self.continue_num_btn_1.setText('Продолжить')
@@ -203,6 +219,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_num_2(self):
         if self.answer_edit_num_2.text() == '+ 1':
             self.continue_num_btn_2.setText('Продолжить')
@@ -220,6 +237,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_num_3(self):
         if self.answer_edit_num_3.text() == '*':
             self.continue_num_btn_3.setText('Продолжить')
@@ -237,6 +255,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_num_4(self):
         if self.answer_edit_num_4.text() == '%':
             self.continue_num_btn_4.setText('Продолжить')
@@ -254,6 +273,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_num_5(self):
         if self.answer_edit_num_5.text() == '+ 1':
             self.continue_num_btn_5.setText('Продолжить')
@@ -271,6 +291,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_num_6(self):
         if self.answer_edit_num_6.text() == 'private + public' or self.answer_edit_num_6.text() == 'public + private':
             self.continue_num_btn_6.setText('Завершить')
@@ -289,6 +310,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Восстановление урока "Работа с числами" в начальное состояние
     def restart_num(self):
         self.main_menu.setCurrentIndex(0)
         self.answer_edit_num_1.setText('')
@@ -333,6 +355,7 @@ class MyWidget(QMainWindow):
         self.continue_num_btn_6.disconnect()
         self.continue_num_btn_6.clicked.connect(self.check_answer_num_6)
 
+    # Проверка ответа
     def check_answer_cond_1(self):
         self.continue_cond_btn_2.setText('Продолжить')
         self.continue_cond_btn_2.clicked.connect(self.next_page_cond)
@@ -342,6 +365,7 @@ class MyWidget(QMainWindow):
         self.name_object = self.progress_cond_1
         self.start_progress_bar()
 
+    # Проверка ответа
     def check_answer_cond_2(self):
         if self.answer_edit_cond_1.text() == 'if':
             self.continue_cond_btn_3.setText('Продолжить')
@@ -359,6 +383,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_cond_3(self):
         if self.answer_edit_cond_2.text() == 'else:':
             self.continue_cond_btn_4.setText('Продолжить')
@@ -376,6 +401,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_cond_4(self):
         if self.answer_edit_cond_6.text() == 'elif':
             self.continue_cond_btn_8.setText('Продолжить')
@@ -393,6 +419,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_cond_5(self):
         if self.answer_edit_cond_7.text() == 'and':
             self.continue_cond_btn_9.setText('Завершить')
@@ -410,6 +437,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Восстановление урока "Условные операторы" в начальное состояние
     def restart_cond(self):
         self.main_menu.setCurrentIndex(0)
         self.continue_cond_btn_2.disconnect()
@@ -443,6 +471,7 @@ class MyWidget(QMainWindow):
         self.progress_cond_5.setValue(0)
         self.answer_edit_cond_7.clear()
 
+    # Проверка ответа
     def check_answer_loop_1(self):
         self.continue_loop_btn_1.setText('Продолжить')
         self.continue_loop_btn_1.clicked.connect(self.next_page_loop)
@@ -450,6 +479,7 @@ class MyWidget(QMainWindow):
         self.name_object = self.progress_loop_1
         self.start_progress_bar()
 
+    # Проверка ответа
     def check_answer_loop_2(self):
         if (self.answer_edit_loop_2.text() == 'while num != 8:' or self.answer_edit_loop_2.text() == 'while num < 8:'
                 or self.answer_edit_loop_2.text() == 'while num <= 7:'):
@@ -466,6 +496,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Проверка ответа
     def check_answer_loop_3(self):
         self.continue_loop_btn_3.setText('Продолжить')
         self.continue_loop_btn_3.clicked.connect(self.next_page_loop)
@@ -473,6 +504,7 @@ class MyWidget(QMainWindow):
         self.name_object = self.progress_loop_3
         self.start_progress_bar()
 
+    # Проверка ответа
     def check_answer_loop_4(self):
         if self.answer_edit_loop_4.text() == 'for i in range(5):':
             self.continue_loop_btn_4.setText('Завершить')
@@ -487,6 +519,7 @@ class MyWidget(QMainWindow):
                 self.is_low_five_hp = True
                 self.update_hp_timer()
 
+    # Восстановление урока "Циклы" в начальное состояние
     def restart_loop(self):
         self.main_menu.setCurrentIndex(0)
         self.answer_edit_loop_4.clear()
@@ -514,19 +547,7 @@ class MyWidget(QMainWindow):
         self.progress_loop_3.setValue(0)
         self.progress_loop_4.setValue(0)
 
-    def open_cond_btn(self):
-        self.progress_num_6.setValue(0)
-        self.cond_btn.setEnabled(True)
-        self.cond_btn.setStyleSheet('''color: white;
-                background: rgb(64,66,115);
-                border-radius: 5px; font-weight:
-                bold; font-size: 16px;
-                ''')
-        if self.progress_basics_part1.value() < 50:
-            self.progress_basics_part1.setValue(50)
-        self.restart_num()
-        self.enable_task('cond_btn')
-
+    # Открытие урока "Работа с числами"
     def open_num_btn(self):
         self.progress_createvar_3.setValue(0)
         self.num_btn.setEnabled(True)
@@ -540,6 +561,21 @@ class MyWidget(QMainWindow):
         self.restart_createvar()
         self.enable_task('num_btn')
 
+    # Открытие урока "Условные операторы"
+    def open_cond_btn(self):
+        self.progress_num_6.setValue(0)
+        self.cond_btn.setEnabled(True)
+        self.cond_btn.setStyleSheet('''color: white;
+                background: rgb(64,66,115);
+                border-radius: 5px; font-weight:
+                bold; font-size: 16px;
+                ''')
+        if self.progress_basics_part1.value() < 50:
+            self.progress_basics_part1.setValue(50)
+        self.restart_num()
+        self.enable_task('cond_btn')
+
+    # Открытие урока "Циклы"
     def open_loop_btn(self):
         self.progress_cond_5.setValue(0)
         self.loop_btn.setEnabled(True)
@@ -553,6 +589,7 @@ class MyWidget(QMainWindow):
         self.restart_cond()
         self.enable_task('loop_btn')
 
+    # Открытие урока "Работа со строками"
     def open_str_btn(self):
         self.progress_loop_4.setValue(0)
         self.str_btn.setEnabled(True)
@@ -566,6 +603,7 @@ class MyWidget(QMainWindow):
         self.restart_loop()
         self.enable_task('cond_btn')
 
+    # Обновление в дб доступность урока
     def enable_task(self, task):
         conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
@@ -575,16 +613,20 @@ class MyWidget(QMainWindow):
         conn.commit()
         conn.close()
 
+    # Если пользователь ошибся, уменьшается кол-во жизней и увеличивается кол-во ошибок
     def miss(self):
         self.count_heart -= 1
         self.errors += 1
         self.update_data()
 
+    # Запуск кода
     def run_code(self):
         code = self.text_edit.toPlainText()
         result = PythonExecutor.execute(code)
+        self.output_edit.clear()
         self.output_edit.setPlainText(result)
 
+    # Открытие файла
     def open_file(self):
         file_name, _ = QFileDialog.getOpenFileName(self, "Открыть файл", "", "Python Files (*.py);;All Files (*)")
 
@@ -594,6 +636,7 @@ class MyWidget(QMainWindow):
                 content = file.read()
                 self.text_edit.setPlainText(content)
 
+    # Сохранение файла
     def save_file(self):
         # Диалоговое окно для выбора места сохранения файла
         file_name, _ = QFileDialog.getSaveFileName(self, "Сохранить файл", "",
@@ -604,6 +647,7 @@ class MyWidget(QMainWindow):
             with open(file_name, 'w') as file:
                 file.write(self.text_edit.toPlainText())
 
+    # Выход из урока
     def exit_btn_pressed(self):
         reply = QMessageBox.information(self, 'Подтверждение', 'Вы уверены, что хотите выйти?',
                                         QMessageBox.Yes | QMessageBox.No)
@@ -613,7 +657,7 @@ class MyWidget(QMainWindow):
             self.restart_num()
             self.restart_cond()
 
-    # Обновляем количество жизней, монет, ошибок, опыта
+    # Обновляем количество жизней, монет, ошибок, опыта и запись в дб
     def update_data(self, db_update=True):
         self.hp_btn.setText(f'💖 {self.count_heart}')
         self.hp_text.setText(' 💖' * self.count_heart)
@@ -637,6 +681,7 @@ class MyWidget(QMainWindow):
     def check_hp(self):
         return bool(self.count_heart)
 
+    # Восстанавливает жизни каждый пройденный час после того как пользователь вышел из приложения
     def update_hp(self):
         conn = sqlite3.connect('data.db')
         cur = conn.cursor()
@@ -661,6 +706,7 @@ class MyWidget(QMainWindow):
         conn.commit()
         conn.close()
 
+    # Создание анимации заполнения прогресса
     def start_progress_bar(self):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.increase_progress_bar)
@@ -677,9 +723,10 @@ class MyWidget(QMainWindow):
         else:
             pass
 
+    # Если у пользователя меньше 5 жизней запускается таймер на их восстановление
     def update_hp_timer(self):
         self.timer_hp = QTimer(self)
-        self.timer_hp.singleShot(100000, self.update_count_hp)
+        self.timer_hp.singleShot(60000, self.update_count_hp)
 
     def update_count_hp(self):
         if self.count_heart < 5:
@@ -687,48 +734,55 @@ class MyWidget(QMainWindow):
             self.update_data()
             self.update_hp_timer()
 
+    # Открывается форма регистрации
     def registration(self):
         form = RegistrationForm(self)
         form.exec_()
 
+    # Открывается форма входа
     def enter(self):
         form = EnterForm(self)
         form.exec_()
 
+    # Открывается окно выбора темы
     def choose_py_theme(self):
         form = ChooseThemeForm(self)
         form.exec_()
 
+    # Вход на последнего залогиненного пользователя
     def set_data(self):
         self.profile_menu.setCurrentIndex(1)
-        conn = sqlite3.connect('data.db')
-        cur = conn.cursor()
-        res = cur.execute('''
-            SELECT * FROM users WHERE id = ?
-        ''', [self.id]).fetchall()
-        conn.commit()
-        conn.close()
-        self.name.setText(res[0][1])
-        self.surname.setText(res[0][2])
-        self.xp_count.setText(str(res[0][7]) + 'xp')
-        self.errors_count.setText(str(res[0][8]))
-        self.count_heart = res[0][5]
-        if self.count_heart < 5:
-            self.update_hp()
-            self.update_hp_timer()
-        self.coins = res[0][6]
-        self.xp = res[0][7]
-        self.errors = res[0][8]
-        self.restart_createvar()
-        if bool(res[0][9]):
-            self.open_num_btn()
-        if bool(res[0][10]):
-            self.open_cond_btn()
-        if bool(res[0][11]):
-            self.open_loop_btn()
-        if bool(res[0][12]):
-            self.open_str_btn()
-
+        try:
+            conn = sqlite3.connect('data.db')
+            cur = conn.cursor()
+            res = cur.execute('''
+                SELECT * FROM users WHERE id = ?
+            ''', [self.id]).fetchall()
+            conn.commit()
+            conn.close()
+            self.name.setText(res[0][1])
+            self.surname.setText(res[0][2])
+            self.xp_count.setText(str(res[0][7]) + 'xp')
+            self.errors_count.setText(str(res[0][8]))
+            self.count_heart = res[0][5]
+            if self.count_heart < 5:
+                self.update_hp()
+                self.update_hp_timer()
+            self.coins = res[0][6]
+            self.xp = res[0][7]
+            self.errors = res[0][8]
+            self.restart_createvar()
+            if bool(res[0][9]):
+                self.open_num_btn()
+            if bool(res[0][10]):
+                self.open_cond_btn()
+            if bool(res[0][11]):
+                self.open_loop_btn()
+            if bool(res[0][12]):
+                self.open_str_btn()
+        except sqlite3.OperationalError:
+            pass
+    # Выход из аккаунта, сброс всех кнопок до начального состояния
     def exit_account(self):
         conn = sqlite3.connect('data.db')
         cur = conn.cursor()
@@ -771,6 +825,6 @@ class MyWidget(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = MyWidget()
+    ex = Mimo()
     ex.show()
     sys.exit(app.exec_())
