@@ -1,14 +1,15 @@
 import contextlib
 import sys
 import sqlite3
+
 from datetime import datetime
 from io import StringIO
-from dialogs import RegistrationForm, EnterForm, ChooseThemeForm
-
 from PyQt5 import uic
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QFontMetrics
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
+
+from dialogs import RegistrationForm, EnterForm, ChooseThemeForm, PEP8
 
 
 class PythonExecutor:
@@ -54,12 +55,14 @@ class Mimo(QMainWindow):
             cur.execute('''
                         INSERT INTO last_enter (id) VALUES (0)
                     ''')
+            self.id = 0
         else:
             self.id = res[0][0]
         conn.commit()
         conn.close()
 
     def initUI(self):
+        self.setWindowTitle('Mimo')
         self.update_data()
         self.connect_buttons()
         self.connect_text_changed_signals()
@@ -68,19 +71,19 @@ class Mimo(QMainWindow):
         self.continue_createvar_btn_1.clicked.connect(self.next_page_createvar)
         self.continue_createvar_btn_2.clicked.connect(self.next_page_createvar)
         self.continue_createvar_btn_3.clicked.connect(self.next_page_createvar)
+        self.continue_cond_btn_1.clicked.connect(self.next_page_cond)
+        self.continue_set_btn_1.clicked.connect(self.next_page_set)
+        self.pep8_btn.clicked.connect(self.pep8_info)
 
     def connect_buttons(self):
-        buttons = [
-            self.createvar_btn, self.num_btn, self.cond_btn, self.loop_btn,
-        ]
+        buttons = [self.createvar_btn, self.num_btn, self.cond_btn, self.loop_btn, self.str_btn, self.set_btn]
         for button in buttons:
             button.clicked.connect(self.choose_themes)
 
     def connect_text_changed_signals(self):
-        text_edits = [
-            self.answer_edit_createvar_1, self.answer_edit_cond_2, self.answer_edit_num_6,
-            self.answer_edit_cond_7, self.answer_edit_loop_2, self.answer_edit_loop_4
-        ]
+        text_edits = [self.answer_edit_createvar_1, self.answer_edit_cond_2, self.answer_edit_num_6,
+                      self.answer_edit_cond_7, self.answer_edit_loop_2, self.answer_edit_loop_4, self.answer_edit_str_3,
+                      self.answer_edit_set_1, self.answer_edit_set_2]
         for text_edit in text_edits:
             text_edit.textChanged.connect(self.change_size)
 
@@ -99,6 +102,8 @@ class Mimo(QMainWindow):
         self.restart_num()
         self.restart_cond()
         self.restart_loop()
+        self.restart_str()
+        self.restart_set()
 
     # Переход на урок, на который нажал пользователь
     def choose_themes(self):
@@ -109,6 +114,8 @@ class Mimo(QMainWindow):
                 'Работа с числами': (1, self.tasks_num, 0),
                 'Условные операторы': (2, self.tasks_cond, 0),
                 'Циклы': (3, self.tasks_loop, 0),
+                'Работа со строками': (4, self.tasks_str, 0),
+                'Множества': (5, self.tasks_set, 0)
             }
             self.main_menu.setCurrentIndex(1)
             self.themes.setCurrentIndex(themes_mapping[text][0])
@@ -126,6 +133,12 @@ class Mimo(QMainWindow):
 
     def next_page_loop(self):
         self.tasks_loop.setCurrentIndex(self.tasks_loop.currentIndex() + 1)
+
+    def next_page_str(self):
+        self.tasks_str.setCurrentIndex(self.tasks_str.currentIndex() + 1)
+
+    def next_page_set(self):
+        self.tasks_set.setCurrentIndex(self.tasks_set.currentIndex() + 1)
 
     # Изменение размера QLineEdit
     def change_size(self):
@@ -146,7 +159,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_createvar()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -175,7 +188,7 @@ class Mimo(QMainWindow):
             self.progress_createvar_3.setValue(100)
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_createvar()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -213,7 +226,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_num()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -231,7 +244,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_num()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -249,7 +262,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_num()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -267,7 +280,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_num()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -285,7 +298,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_num()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -304,7 +317,7 @@ class Mimo(QMainWindow):
 
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_num()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -377,7 +390,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_cond()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -395,7 +408,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_cond()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -413,7 +426,7 @@ class Mimo(QMainWindow):
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_cond()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -431,7 +444,7 @@ class Mimo(QMainWindow):
             self.progress_cond_5.setValue(100)
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_cond()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -476,6 +489,8 @@ class Mimo(QMainWindow):
         self.continue_loop_btn_1.setText('Продолжить')
         self.continue_loop_btn_1.clicked.connect(self.next_page_loop)
         self.frame_console_10.show()
+        self.xp += 25
+        self.update_data()
         self.name_object = self.progress_loop_1
         self.start_progress_bar()
 
@@ -486,11 +501,13 @@ class Mimo(QMainWindow):
             self.continue_loop_btn_2.setText('Продолжить')
             self.continue_loop_btn_2.clicked.connect(self.next_page_loop)
             self.frame_console_20.show()
+            self.xp += 25
+            self.update_data()
             self.name_object = self.progress_loop_2
             self.start_progress_bar()
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_loop()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -501,6 +518,8 @@ class Mimo(QMainWindow):
         self.continue_loop_btn_3.setText('Продолжить')
         self.continue_loop_btn_3.clicked.connect(self.next_page_loop)
         self.frame_console_14.show()
+        self.xp += 25
+        self.update_data()
         self.name_object = self.progress_loop_3
         self.start_progress_bar()
 
@@ -510,10 +529,13 @@ class Mimo(QMainWindow):
             self.continue_loop_btn_4.setText('Завершить')
             self.continue_loop_btn_4.clicked.connect(self.open_str_btn)
             self.frame_console_15.show()
+            self.xp += 25
+            self.coins += 100
+            self.update_data()
             self.progress_loop_4.setValue(100)
         else:
             self.miss()
-            if self.count_heart == 0:
+            if self.count_heart <= 0:
                 self.restart_loop()
             if not self.is_low_five_hp:
                 self.is_low_five_hp = True
@@ -547,15 +569,160 @@ class Mimo(QMainWindow):
         self.progress_loop_3.setValue(0)
         self.progress_loop_4.setValue(0)
 
+    def check_answer_str_1(self):
+        self.continue_str_btn_1.setText('Продолжить')
+        self.continue_str_btn_1.clicked.connect(self.next_page_str)
+        self.frame_console_21.show()
+        self.xp += 25
+        self.update_data()
+        self.name_object = self.progress_str_1
+        self.start_progress_bar()
+
+    def check_answer_str_2(self):
+        if self.answer_edit_str_1.text() == '[1]':
+            self.continue_str_btn_2.setText('Продолжить')
+            self.continue_str_btn_2.clicked.connect(self.next_page_str)
+            self.frame_console_22.show()
+            self.xp += 25
+            self.update_data()
+            self.name_object = self.progress_str_2
+            self.start_progress_bar()
+        else:
+            self.miss()
+            if self.count_heart <= 0:
+                self.restart_str()
+            if not self.is_low_five_hp:
+                self.is_low_five_hp = True
+                self.update_hp_timer()
+
+    def check_answer_str_3(self):
+        self.continue_str_btn_4.setText('Продолжить')
+        self.continue_str_btn_4.clicked.connect(self.next_page_str)
+        self.frame_console_23.show()
+        self.xp += 25
+        self.update_data()
+        self.name_object = self.progress_str_3
+        self.start_progress_bar()
+
+    def check_answer_str_4(self):
+        if self.answer_edit_str_3.text() == '[7:10]':
+            self.continue_str_btn_5.setText('Продолжить')
+            self.continue_str_btn_5.clicked.connect(self.next_page_str)
+            self.frame_console_29.show()
+            self.xp += 25
+            self.update_data()
+            self.name_object = self.progress_str_4
+            self.start_progress_bar()
+        else:
+            self.miss()
+            if self.count_heart <= 0:
+                self.restart_str()
+            if not self.is_low_five_hp:
+                self.is_low_five_hp = True
+                self.update_hp_timer()
+
+    def check_answer_str_5(self):
+        self.continue_str_btn_6.setText('Заверщить')
+        self.continue_str_btn_6.clicked.connect(self.open_set_btn)
+        self.frame_console_30.show()
+        self.xp += 25
+        self.coins += 100
+        self.update_data()
+        self.progress_str_5.setValue(100)
+
+    def restart_str(self):
+        self.main_menu.setCurrentIndex(0)
+        self.frame_console_29.hide()
+        self.frame_console_30.hide()
+        self.continue_str_btn_1.setText('Проверить')
+        self.continue_str_btn_1.disconnect()
+        self.continue_str_btn_1.clicked.connect(self.check_answer_str_1)
+        self.progress_str_1.setValue(0)
+        self.frame_console_21.hide()
+        self.frame_console_22.hide()
+        self.frame_console_23.hide()
+        self.progress_str_2.setValue(0)
+        self.progress_str_3.setValue(0)
+        self.progress_str_4.setValue(0)
+        self.progress_str_5.setValue(0)
+        self.continue_str_btn_2.disconnect()
+        self.continue_str_btn_2.setText('Проверить')
+        self.continue_str_btn_2.clicked.connect(self.check_answer_str_2)
+        self.answer_edit_str_1.clear()
+        self.continue_str_btn_4.setText('Проверить')
+        self.continue_str_btn_4.disconnect()
+        self.continue_str_btn_4.clicked.connect(self.check_answer_str_3)
+        self.continue_str_btn_5.setText('Проверить')
+        self.continue_str_btn_5.disconnect()
+        self.continue_str_btn_5.clicked.connect(self.check_answer_str_4)
+        self.answer_edit_str_3.clear()
+        self.answer_edit_str_3.resize(31, 31)
+        self.continue_str_btn_6.setText('Проверить')
+        self.continue_str_btn_6.disconnect()
+        self.continue_str_btn_6.clicked.connect(self.check_answer_str_5)
+
+    def check_answer_set_1(self):
+        self.continue_set_btn_2.setText('Продолжить')
+        self.continue_set_btn_2.clicked.connect(self.next_page_set)
+        self.frame_console_31.show()
+        self.xp += 25
+        self.update_data()
+        self.name_object = self.progress_set_1
+        self.start_progress_bar()
+
+    def check_answer_set_2(self):
+        self.continue_set_btn_5.setText('Продолжить')
+        self.continue_set_btn_5.clicked.connect(self.next_page_set)
+        self.frame_console_32.show()
+        self.xp += 25
+        self.update_data()
+        self.name_object = self.progress_set_2
+        self.start_progress_bar()
+
+    def check_answer_set_3(self):
+        if ((self.answer_edit_set_1.text() == '.add("crow")' or self.answer_edit_set_1.text() == ".add('crow')") and
+                (self.answer_edit_set_2.text() == '.remove("cat")' or self.answer_edit_set_2.text() == ".remove('cat')"
+                 or self.answer_edit_set_2.text() == '.discard("cat")'
+                 or self.answer_edit_set_2.text() == ".discard('cat')")):
+            self.continue_set_btn_6.setText('Завершить')
+            self.continue_set_btn_6.clicked.connect(self.restart_set)
+            self.frame_console_33.show()
+            self.xp += 25
+            self.coins += 100
+            self.update_data()
+            self.progress_set_3.setValue(100)
+        else:
+            self.miss()
+            if self.count_heart <= 0:
+                self.restart_set()
+            if not self.is_low_five_hp:
+                self.is_low_five_hp = True
+                self.update_hp_timer()
+
+    def restart_set(self):
+        self.main_menu.setCurrentIndex(0)
+        self.frame_console_31.hide()
+        self.continue_set_btn_2.setText('Проверить')
+        self.continue_set_btn_2.disconnect()
+        self.continue_set_btn_2.clicked.connect(self.check_answer_set_1)
+        self.progress_set_1.setValue(0)
+        self.progress_set_2.setValue(0)
+        self.progress_set_3.setValue(0)
+        self.frame_console_32.hide()
+        self.continue_set_btn_5.setText('Проверить')
+        self.continue_set_btn_5.disconnect()
+        self.continue_set_btn_5.clicked.connect(self.check_answer_set_2)
+        self.frame_console_32.hide()
+        self.frame_console_33.hide()
+        self.continue_set_btn_6.setText('Проверить')
+        self.continue_set_btn_6.disconnect()
+        self.continue_set_btn_6.clicked.connect(self.check_answer_set_3)
+
     # Открытие урока "Работа с числами"
     def open_num_btn(self):
         self.progress_createvar_3.setValue(0)
         self.num_btn.setEnabled(True)
-        self.num_btn.setStyleSheet('''color: white;
-        background: rgb(64,66,115);
-        border-radius: 5px; font-weight:
-        bold; font-size: 16px;
-        ''')
+        self.open_btns(self.num_btn)
         if self.progress_basics_part1.value() < 25:
             self.progress_basics_part1.setValue(25)
         self.restart_createvar()
@@ -565,11 +732,7 @@ class Mimo(QMainWindow):
     def open_cond_btn(self):
         self.progress_num_6.setValue(0)
         self.cond_btn.setEnabled(True)
-        self.cond_btn.setStyleSheet('''color: white;
-                background: rgb(64,66,115);
-                border-radius: 5px; font-weight:
-                bold; font-size: 16px;
-                ''')
+        self.open_btns(self.cond_btn)
         if self.progress_basics_part1.value() < 50:
             self.progress_basics_part1.setValue(50)
         self.restart_num()
@@ -579,11 +742,7 @@ class Mimo(QMainWindow):
     def open_loop_btn(self):
         self.progress_cond_5.setValue(0)
         self.loop_btn.setEnabled(True)
-        self.loop_btn.setStyleSheet('''color: white;
-        background: rgb(64,66,115);
-        border-radius: 5px; font-weight:
-        bold; font-size: 16px;
-        ''')
+        self.open_btns(self.loop_btn)
         if self.progress_basics_part1.value() < 75:
             self.progress_basics_part1.setValue(75)
         self.restart_cond()
@@ -593,25 +752,40 @@ class Mimo(QMainWindow):
     def open_str_btn(self):
         self.progress_loop_4.setValue(0)
         self.str_btn.setEnabled(True)
-        self.str_btn.setStyleSheet('''color: white;
-                background: rgb(64,66,115);
-                border-radius: 5px; font-weight:
-                bold; font-size: 16px;
-                ''')
+        self.open_btns(self.str_btn)
         if self.progress_basics_part1.value() < 100:
             self.progress_basics_part1.setValue(100)
         self.restart_loop()
-        self.enable_task('cond_btn')
+        self.enable_task('str_btn')
+
+    def open_set_btn(self):
+        self.progress_loop_4.setValue(0)
+        self.set_btn.setEnabled(True)
+        self.open_btns(self.set_btn)
+        if self.progress_basics_part2.value() < 66:
+            self.progress_basics_part1.setValue(33)
+        self.restart_str()
+        self.enable_task('set_btn')
+
+    def open_btns(self, btn):
+        btn.setStyleSheet('''color: white;
+                   background: rgb(64,66,115);
+                   border-radius: 5px; font-weight:
+                   bold; font-size: 16px;
+                   ''')
 
     # Обновление в дб доступность урока
     def enable_task(self, task):
-        conn = sqlite3.connect('data.db')
-        cursor = conn.cursor()
-        cursor.execute(f'''
-                            UPDATE users SET {task} = 1 WHERE id = ?
-                        ''', [self.id])
-        conn.commit()
-        conn.close()
+        try:
+            conn = sqlite3.connect('data.db')
+            cursor = conn.cursor()
+            cursor.execute(f'''
+                                UPDATE users SET {task} = 1 WHERE id = ?
+                            ''', [self.id])
+            conn.commit()
+            conn.close()
+        except sqlite3.OperationalError:
+            pass
 
     # Если пользователь ошибся, уменьшается кол-во жизней и увеличивается кол-во ошибок
     def miss(self):
@@ -656,6 +830,8 @@ class Mimo(QMainWindow):
             self.restart_createvar()
             self.restart_num()
             self.restart_cond()
+            self.restart_str()
+            self.restart_set()
 
     # Обновляем количество жизней, монет, ошибок, опыта и запись в дб
     def update_data(self, db_update=True):
@@ -681,23 +857,33 @@ class Mimo(QMainWindow):
     def check_hp(self):
         return bool(self.count_heart)
 
-    # Восстанавливает жизни каждый пройденный час после того как пользователь вышел из приложения
+    # Восстанавливает жизни каждый пройденный час, после того как пользователь вышел из аккаунта
     def update_hp(self):
         conn = sqlite3.connect('data.db')
         cur = conn.cursor()
+
+        # Получение времени последнего входа пользователя
         last_time_str = cur.execute('''
             SELECT last_enter_time FROM users WHERE id = ?
         ''', [self.id]).fetchone()[0]
-        print(last_time_str)
-        last_time = datetime.fromtimestamp(last_time_str)
 
-        time_difference = datetime.now() - last_time
-        elapsed_minutes = time_difference.total_seconds() / 60 / 60
+        try:
+            # Преобразование времени из строки в объект datetime
+            last_time = datetime.fromtimestamp(last_time_str)
 
-        if elapsed_minutes + self.count_heart >= 5:
-            self.count_heart = 5
-        else:
-            self.count_heart += int(elapsed_minutes)
+            # Вычисление разницы во времени между текущим моментом и последним входом
+            time_difference = datetime.now() - last_time
+            elapsed_hours = time_difference.total_seconds() / 60 / 60
+
+            # Если прошло более часа, обновляем количество жизней до максимального значения (5)
+            if elapsed_hours + self.count_heart >= 5:
+                self.count_heart = 5
+            else:
+                # Иначе увеличиваем количество жизней на количество прошедших часов
+                self.count_heart += int(elapsed_hours)
+        except TypeError:
+            pass
+        conn.close()
 
         # Обновление времени
         cur.execute('''
@@ -749,6 +935,10 @@ class Mimo(QMainWindow):
         form = ChooseThemeForm(self)
         form.exec_()
 
+    def pep8_info(self):
+        form = PEP8(self)
+        form.exec_()
+
     # Вход на последнего залогиненного пользователя
     def set_data(self):
         self.profile_menu.setCurrentIndex(1)
@@ -780,8 +970,11 @@ class Mimo(QMainWindow):
                 self.open_loop_btn()
             if bool(res[0][12]):
                 self.open_str_btn()
+            if bool(res[0][13]):
+                self.open_set_btn()
         except sqlite3.OperationalError:
             pass
+
     # Выход из аккаунта, сброс всех кнопок до начального состояния
     def exit_account(self):
         conn = sqlite3.connect('data.db')
@@ -793,27 +986,11 @@ class Mimo(QMainWindow):
         conn.close()
         self.profile_menu.setCurrentIndex(0)
         self.num_btn.setEnabled(False)
-        self.num_btn.setStyleSheet('''
-                color: white;
-                background: rgb(49, 51, 88);
-                border-radius: 5px;
-                font-weight: bold;
-                font-size: 16px;
-        ''')
-        self.cond_btn.setStyleSheet('''
-                color: white;
-                background: rgb(49, 51, 88);
-                border-radius: 5px;
-                font-weight: bold;
-                font-size: 16px;
-                ''')
-        self.loop_btn.setStyleSheet('''
-                        color: white;
-                        background: rgb(49, 51, 88);
-                        border-radius: 5px;
-                        font-weight: bold;
-                        font-size: 16px;
-                        ''')
+        self.close_btns(self.num_btn)
+        self.close_btns(self.cond_btn)
+        self.close_btns(self.loop_btn)
+        self.close_btns(self.str_btn)
+        self.close_btns(self.set_btn)
         self.progress_basics_part1.setValue(0)
         self.progress_basics_part2.setValue(0)
         self.count_heart = 5
@@ -821,6 +998,16 @@ class Mimo(QMainWindow):
         self.coins = 0
         self.errors = 0
         self.update_data(False)
+
+    # Меняет цвет кнопки в цвет недоступности
+    def close_btns(self, btn):
+        btn.setStyleSheet('''
+                color: white;
+                background: rgb(49, 51, 88);
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 16px;
+        ''')
 
 
 if __name__ == '__main__':

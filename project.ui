@@ -74,7 +74,7 @@ QTabBar::tab:selected {
        <enum>QTabWidget::South</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="learning_tab">
        <property name="styleSheet">
@@ -182,7 +182,7 @@ QTabBar::tab:selected {
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_basic_py_part1">
          <widget class="QProgressBar" name="progress_basics_part1">
@@ -426,7 +426,7 @@ QProgressBar::chunk {
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>240</y>
+            <y>210</y>
             <width>711</width>
             <height>51</height>
            </rect>
@@ -442,56 +442,6 @@ QProgressBar::chunk {
           </property>
           <property name="text">
            <string>Множества</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="list_btn">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>350</y>
-            <width>711</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	color: white;
-	background: rgb(49, 51, 88);
-	border-radius: 5px;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-          </property>
-          <property name="text">
-           <string>Списки</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="dict_and_tuple_btn">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>460</y>
-            <width>711</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	color: white;
-	background: rgb(49, 51, 88);
-	border-radius: 5px;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-          </property>
-          <property name="text">
-           <string>Словари и кортежи</string>
           </property>
          </widget>
         </widget>
@@ -1147,7 +1097,7 @@ QProgressBar::chunk {
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="task_createvar_1">
          <widget class="QLabel" name="text_createvar_1">
@@ -1165,7 +1115,7 @@ QProgressBar::chunk {
 }</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Python - &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;фантастический язык программирования как для новичков,&lt;br/&gt;так и для экспертов&lt;br/&gt;Это язык, который выбирают многие компании и часто выбирают для личных проектов.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Вы можете использовать его для автоматизации задач, продвижения в работе&lt;br/&gt;с анализами данных, машинным обучением и многим другим!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Python - &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;фантастический язык программирования как для новичков,&lt;br/&gt;так и для экспертов&lt;br/&gt;Это язык, который выбирают многие компании и часто выбирают для личных&lt;br/&gt; проектов.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Вы можете использовать его для автоматизации задач, продвижения в работе&lt;br/&gt;с анализами данных, машинным обучением и многим другим!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QPushButton" name="continue_createvar_btn_1">
@@ -1208,7 +1158,7 @@ QProgressBar::chunk {
 }</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Независимо от того, насколько сложна программа, она&lt;br/&gt;начинается с одной строки кода. Это первая строка обычно&lt;br/&gt;является &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;перменной&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Программы используют переменные для &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;запоминания&lt;br/&gt; информации. &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Подобно коробкам, переменные имеют&lt;br/&gt;содержимое и имена, которые говорят нам,&lt;br/&gt;что находится внутри. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Независимо от того, насколько сложна программа, она&lt;br/&gt;начинается с одной строки кода. Это первая строка обычно&lt;br/&gt;является &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;переменной&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Программы используют переменные для &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;запоминания&lt;br/&gt;информации. &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Подобно коробкам, переменные имеют&lt;br/&gt;содержимое и имена, которые говорят нам,&lt;br/&gt;что находится внутри. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QPushButton" name="continue_createvar_btn_2">
@@ -3543,7 +3493,7 @@ QProgressBar::chunk {
          </rect>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="task_cond_1">
          <widget class="QLabel" name="text_cond_1">
@@ -5304,7 +5254,7 @@ QProgressBar::chunk {
          </rect>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="task_loop_1">
          <widget class="QLabel" name="text_num_7">
@@ -6354,664 +6304,6 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="task_loop_5">
-         <widget class="QProgressBar" name="progress_num_11">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>590</y>
-            <width>771</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QProgressBar {
-	background-color: rgb(36,39,70);
-     border: 1px solid rgb(36,39,70);
-}</string>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QFrame" name="frame_continue_19">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>600</y>
-            <width>761</width>
-            <height>91</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(51,54,97);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QPushButton" name="continue_num_btn_11">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>741</width>
-             <height>51</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-                background-color: rgb(136, 90, 222); /* Purple color */
-                color: white;
-                border: 2px solid rgb(136, 90, 222);
-                border-radius: 10px; /* Rounded corners */
-                padding: 10px;
-				font-weight: bold;
-            }</string>
-           </property>
-           <property name="text">
-            <string>Проверить</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QFrame" name="frame_console_16">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>230</y>
-            <width>761</width>
-            <height>111</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(29,32,51);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QLabel" name="answer_text_18">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>131</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>You're on step:</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="console_16">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>761</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	background: rgb(51,54,97);
-	font-weight: bold;
-}</string>
-           </property>
-           <property name="text">
-            <string>  console</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="answer_text_19">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>80</y>
-             <width>21</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>71</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QLabel" name="script_py_num_11">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>80</y>
-            <width>761</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-	color: white;
-	background: rgb(51,54,97);
-	font-weight: bold;
-}</string>
-          </property>
-          <property name="text">
-           <string>   script.py</string>
-          </property>
-         </widget>
-         <widget class="QFrame" name="frame_answer_20">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>120</y>
-            <width>761</width>
-            <height>111</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(29,32,51);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QLineEdit" name="answer_edit_num_11">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>200</x>
-             <y>70</y>
-             <width>31</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
-	color: white;
-	background:rgb(64,66,117);
-	border: 0 0 0 0;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="maxLength">
-            <number>3</number>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_57">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>191</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>number_of_steps = 70</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_58">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>40</y>
-             <width>191</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>print(&quot;You're on step:&quot;)</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_59">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>70</y>
-             <width>191</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>print(number_of_steps</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_60">
-           <property name="geometry">
-            <rect>
-             <x>240</x>
-             <y>70</y>
-             <width>16</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>)</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QLabel" name="text_num_11">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>751</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-	color: white;
-}</string>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Мы также можем использовать переменные с числами для&lt;br/&gt;вычислений. Мы увидим это в действии, добавив &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;1 к number_of_steps&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="task_loop_6">
-         <widget class="QFrame" name="frame_continue_20">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>600</y>
-            <width>761</width>
-            <height>91</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(51,54,97);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QPushButton" name="continue_num_btn_12">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>741</width>
-             <height>51</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-                background-color: rgb(136, 90, 222); /* Purple color */
-                color: white;
-                border: 2px solid rgb(136, 90, 222);
-                border-radius: 10px; /* Rounded corners */
-                padding: 10px;
-				font-weight: bold;
-            }</string>
-           </property>
-           <property name="text">
-            <string>Проверить</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QProgressBar" name="progress_num_12">
-          <property name="geometry">
-           <rect>
-            <x>-10</x>
-            <y>590</y>
-            <width>781</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QProgressBar {
-	background-color: rgb(36,39,70);
-     border: 1px solid rgb(36,39,70);
-}</string>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QLabel" name="text_num_12">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>20</y>
-            <width>751</width>
-            <height>71</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-	color: white;
-}</string>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Поскольку выражения становятся значениями, мы можем&lt;br/&gt; сохранять результаты вычислений в переменных, как здесь,&lt;br/&gt;где &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;total&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; содержит &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;private + public&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-         <widget class="QFrame" name="frame_console_19">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>300</y>
-            <width>761</width>
-            <height>111</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(29,32,51);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QLabel" name="answer_text_20">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>131</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>Total posts:</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="console_17">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>761</width>
-             <height>41</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	background: rgb(51,54,97);
-	font-weight: bold;
-}</string>
-           </property>
-           <property name="text">
-            <string>  console</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="answer_text_21">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>80</y>
-             <width>21</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>13</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QFrame" name="frame_answer_21">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>140</y>
-            <width>761</width>
-            <height>161</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(29,32,51);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QLineEdit" name="answer_edit_num_12">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>80</x>
-             <y>70</y>
-             <width>31</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
-	color: white;
-	background:rgb(64,66,117);
-	border: 0 0 0 0;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="maxLength">
-            <number>18</number>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_61">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>191</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>private = 3</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_62">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>40</y>
-             <width>191</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>public = 10</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_63">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>70</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>total = </string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_64">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>100</y>
-             <width>171</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>print(&quot;Total posts:&quot;)</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_65">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>130</y>
-             <width>171</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-	color: white;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string>print(total)</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QLabel" name="script_py_num_12">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>100</y>
-            <width>761</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-	color: white;
-	background: rgb(51,54,97);
-	font-weight: bold;
-}</string>
-          </property>
-          <property name="text">
-           <string>   script.py</string>
-          </property>
-         </widget>
-        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="page_3">
@@ -7025,7 +6317,7 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="task_str_1">
          <widget class="QLabel" name="text_str_1">
@@ -7779,7 +7071,7 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </widget>
-         <widget class="QProgressBar" name="progress_str_7">
+         <widget class="QProgressBar" name="progress_str_4">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -7821,7 +7113,7 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="continue_str_btn_8">
+          <widget class="QPushButton" name="continue_str_btn_5">
            <property name="geometry">
             <rect>
              <x>10</x>
@@ -7902,7 +7194,7 @@ p, li { white-space: pre-wrap; }
 }</string>
            </property>
            <property name="text">
-            <string>print('Hello, Qt!&quot;            )</string>
+            <string>print('Hello, Qt!&quot;              )</string>
            </property>
           </widget>
           <widget class="QLineEdit" name="answer_edit_str_3">
@@ -7912,7 +7204,7 @@ p, li { white-space: pre-wrap; }
            <property name="geometry">
             <rect>
              <x>150</x>
-             <y>45</y>
+             <y>50</y>
              <width>21</width>
              <height>31</height>
             </rect>
@@ -7954,7 +7246,7 @@ p, li { white-space: pre-wrap; }
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;У строк есть методы.&lt;br/&gt;Например:&lt;br/&gt;Мы можем проверить есть ли подстрока в строке с помощью &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;in&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br/&gt;Мы можем конкатенировать(складывать) строки c помощью &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;+&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;С помощью &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;len&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; мы можем узнать длину строки&lt;br/&gt;Но это не все методы&lt;br/&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QProgressBar" name="progress_str_8">
+         <widget class="QProgressBar" name="progress_str_5">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -8198,7 +7490,7 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="continue_str_btn_9">
+          <widget class="QPushButton" name="continue_str_btn_6">
            <property name="geometry">
             <rect>
              <x>10</x>
@@ -8236,10 +7528,10 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="task_set_1">
-         <widget class="QLabel" name="text_createvar_7">
+         <widget class="QLabel" name="text_set_1">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -8257,7 +7549,7 @@ p, li { white-space: pre-wrap; }
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Множество&lt;br/&gt;&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Множество - составной тип данных, представляющий собой несколько значений под одним именем. Этот тип называется set.&lt;br/&gt;Для того чтобы создать пустое множество, то делаем так&lt;br/&gt;names = set()&lt;br/&gt;Если хотим что-то поместить в множество, то делаем так&lt;br/&gt;animals = {'fox', 'cat', 'dog'}&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="continue_createvar_btn_7">
+         <widget class="QPushButton" name="continue_set_btn_1">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -8282,7 +7574,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </widget>
         <widget class="QWidget" name="task_set_2">
-         <widget class="QLabel" name="text_createvar_8">
+         <widget class="QLabel" name="text_set_2">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -8325,7 +7617,7 @@ p, li { white-space: pre-wrap; }
             <rect>
              <x>10</x>
              <y>50</y>
-             <width>121</width>
+             <width>191</width>
              <height>21</height>
             </rect>
            </property>
@@ -8337,7 +7629,7 @@ p, li { white-space: pre-wrap; }
 }</string>
            </property>
            <property name="text">
-            <string>Hello, world!</string>
+            <string>{'cat', 'dog', 'fox', 'lion'}</string>
            </property>
           </widget>
           <widget class="QLabel" name="console_32">
@@ -8361,7 +7653,7 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </widget>
-         <widget class="QProgressBar" name="progress_createvar_10">
+         <widget class="QProgressBar" name="progress_set_1">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -8504,7 +7796,7 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="continue_createvar_btn_16">
+          <widget class="QPushButton" name="continue_set_btn_2">
            <property name="geometry">
             <rect>
              <x>10</x>
@@ -8536,7 +7828,7 @@ p, li { white-space: pre-wrap; }
             <x>10</x>
             <y>0</y>
             <width>741</width>
-            <height>221</height>
+            <height>101</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -8545,138 +7837,10 @@ p, li { white-space: pre-wrap; }
 }</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Итак, если вы хотите, чтобы у вас была переменная с каким-то именем,&lt;br/&gt;нужно написать на отдельной строчке&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;&amp;lt;имя переменной&amp;gt; = &amp;lt;значение переменной&amp;gt;&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Переменные могут содержать все типы значений.&lt;br/&gt;Давайте посмотрим, как хранить здесь текстовые значения,&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;н&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;апример:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;bird = &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#00b900;&quot;&gt;&amp;quot;Голубь&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Если вы хотите удалить элемент то используйте &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;remove() ,&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;но если во множестве этого элемента не будет то появиться ошибка.&lt;br/&gt;Если вы не уверены, что во множестве есть элемент то можете&lt;br/&gt;использовать &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;discard(), &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;даже если нет элемента, ошибка не появиться&lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="continue_createvar_btn_9">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>610</y>
-            <width>741</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-                background-color: rgb(136, 90, 222); /* Purple color */
-                color: white;
-                border: 2px solid rgb(136, 90, 222);
-                border-radius: 10px; /* Rounded corners */
-                padding: 10px;
-				font-weight: bold;
-            }</string>
-          </property>
-          <property name="text">
-           <string>Продолжить</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="task_set_4">
-         <widget class="QLabel" name="text_createvar_11">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>0</y>
-            <width>741</width>
-            <height>91</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-	color: white;
-}</string>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Создайте переменную с название &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;car &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;со значением &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;&amp;quot;Porsche&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Соблюдайте &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pep8_btn_3">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>50</y>
-            <width>61</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-	color: white;
-	font-weight: bold, italic;
-	font-size: 18px;
-	border: 0 0 0 0;
-	text-decoration: underline;
-}</string>
-          </property>
-          <property name="text">
-           <string>PEP-8</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="script_py_createvar_3">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>100</y>
-            <width>761</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-	color: white;
-	background: rgb(51,54,97);
-	font-weight: bold;
-}</string>
-          </property>
-          <property name="text">
-           <string>   script.py</string>
-          </property>
-         </widget>
-         <widget class="QFrame" name="frame_answer_4">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>140</y>
-            <width>761</width>
-            <height>91</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(29,32,51);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QLineEdit" name="answer_edit_createvar_5">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>21</width>
-             <height>31</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
-	color: white;
-	background:rgb(64,66,117);
-	border: 0 0 0 0;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QProgressBar" name="progress_createvar_5">
+         <widget class="QProgressBar" name="progress_set_2">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -8698,59 +7862,13 @@ p, li { white-space: pre-wrap; }
            <bool>false</bool>
           </property>
          </widget>
-         <widget class="QFrame" name="frame_continue_22">
+         <widget class="QFrame" name="frame_answer_31">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>599</y>
+            <y>100</y>
             <width>761</width>
-            <height>91</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-	background: rgb(51,54,97);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <widget class="QPushButton" name="continue_createvar_btn_11">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>741</width>
-             <height>51</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-                background-color: rgb(136, 90, 222); /* Purple color */
-                color: white;
-                border: 2px solid rgb(136, 90, 222);
-                border-radius: 10px; /* Rounded corners */
-                padding: 10px;
-				font-weight: bold;
-            }</string>
-           </property>
-           <property name="text">
-            <string>Проверить</string>
-           </property>
-          </widget>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="task_set_5">
-         <widget class="QFrame" name="frame_answer_29">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>260</y>
-            <width>761</width>
-            <height>111</height>
+            <height>141</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -8764,32 +7882,7 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QLineEdit" name="answer_edit_createvar_6">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>181</width>
-             <height>31</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit {
-	color: white;
-	background:rgb(64,66,117);
-	border: 0 0 0 0;
-	font-weight: bold;
-	font-size: 16px;
-}</string>
-           </property>
-           <property name="text">
-            <string> print(&quot;Hello, world&quot;)</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="script_py_4">
+          <widget class="QLabel" name="script_py_19">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -8809,30 +7902,72 @@ p, li { white-space: pre-wrap; }
             <string>   script.py</string>
            </property>
           </widget>
-         </widget>
-         <widget class="QLabel" name="text_createvar_12">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>0</y>
-            <width>741</width>
-            <height>251</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+          <widget class="QLabel" name="answer_text_73">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
 	color: white;
+	font-weight: bold;
+	font-size: 16px;
 }</string>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'YS Text,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif'; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Команда print()&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'YS Text,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif'; font-size:12pt; color:#ffffff;&quot;&gt;Внутри круглых скобок мы указываем то, что необходимо&lt;br/&gt;вывести на экран. Если это какой-то текст, указываем его&lt;br/&gt;внутри кавычек. Главное, чтобы текст начинался &lt;br/&gt;и заканчивался кавычками одного типа.&lt;br/&gt;Команда &lt;/span&gt;&lt;span style=&quot; font-family:'Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace'; font-size:12pt; color:#ffffff;&quot;&gt;print&lt;/span&gt;&lt;span style=&quot; font-family:'YS Text,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif'; font-size:12pt; color:#ffffff;&quot;&gt; записывается только строчными буквами,&lt;br/&gt;другое написание недопустимо.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'YS Text,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif'; font-size:12pt; color:#ffffff;&quot;&gt;Например:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
+           </property>
+           <property name="text">
+            <string>animals = {'fox', 'cat', 'dog'}</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="answer_text_74">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>80</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string>animals.remove('fox')</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="answer_text_75">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>110</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string>print(animals)</string>
+           </property>
+          </widget>
          </widget>
-         <widget class="QFrame" name="frame_console_3">
+         <widget class="QFrame" name="frame_console_32">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>370</y>
+            <y>240</y>
             <width>761</width>
             <height>111</height>
            </rect>
@@ -8848,12 +7983,12 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QLabel" name="answer_text_3">
+          <widget class="QLabel" name="answer_text_76">
            <property name="geometry">
             <rect>
              <x>10</x>
              <y>50</y>
-             <width>121</width>
+             <width>191</width>
              <height>21</height>
             </rect>
            </property>
@@ -8865,10 +8000,10 @@ p, li { white-space: pre-wrap; }
 }</string>
            </property>
            <property name="text">
-            <string>Hello, world!</string>
+            <string>{'cat', 'dog', 'lion'}</string>
            </property>
           </widget>
-          <widget class="QLabel" name="console_3">
+          <widget class="QLabel" name="console_35">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -8889,29 +8024,7 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </widget>
-         <widget class="QProgressBar" name="progress_createvar_6">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>590</y>
-            <width>771</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QProgressBar {
-	background-color: rgb(36,39,70);
-     border: 1px solid rgb(36,39,70);
-}</string>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QFrame" name="frame_continue_23">
+         <widget class="QFrame" name="frame_continue_36">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -8931,7 +8044,7 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="continue_createvar_btn_12">
+          <widget class="QPushButton" name="continue_set_btn_5">
            <property name="geometry">
             <rect>
              <x>10</x>
@@ -8956,32 +8069,189 @@ p, li { white-space: pre-wrap; }
           </widget>
          </widget>
         </widget>
-        <widget class="QWidget" name="task_set_6">
-         <widget class="QLabel" name="script_py_5">
+        <widget class="QWidget" name="task_set_4">
+         <widget class="QFrame" name="frame_answer_32">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>110</y>
+            <y>40</y>
             <width>761</width>
-            <height>41</height>
+            <height>171</height>
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLabel {
+           <string notr="true">QFrame {
+	background: rgb(29,32,51);
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QLabel" name="script_py_20">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>761</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
 	color: white;
 	background: rgb(51,54,97);
 	font-weight: bold;
 }</string>
-          </property>
-          <property name="text">
-           <string>   script.py</string>
-          </property>
+           </property>
+           <property name="text">
+            <string>   script.py</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="answer_text_78">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string>animals = {'fox', 'cat', 'dog'}</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="answer_text_79">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>80</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string>animals</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="answer_text_80">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>140</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string>print(animals)</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="answer_text_81">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>110</y>
+             <width>361</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string>animals</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="answer_edit_set_1">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>80</x>
+             <y>80</y>
+             <width>31</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+	color: white;
+	background:rgb(64,66,117);
+	border: 0 0 0 0;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>100</number>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="answer_edit_set_2">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>80</x>
+             <y>110</y>
+             <width>31</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+	color: white;
+	background:rgb(64,66,117);
+	border: 0 0 0 0;
+	font-weight: bold;
+	font-size: 16px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>100</number>
+           </property>
+          </widget>
          </widget>
-         <widget class="QFrame" name="frame_console_4">
+         <widget class="QFrame" name="frame_console_33">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>220</y>
+            <y>210</y>
             <width>761</width>
             <height>111</height>
            </rect>
@@ -8997,12 +8267,12 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QLabel" name="answer_text_4">
+          <widget class="QLabel" name="answer_text_77">
            <property name="geometry">
             <rect>
              <x>10</x>
              <y>50</y>
-             <width>121</width>
+             <width>191</width>
              <height>21</height>
             </rect>
            </property>
@@ -9014,10 +8284,10 @@ p, li { white-space: pre-wrap; }
 }</string>
            </property>
            <property name="text">
-            <string>Hello, Qt!</string>
+            <string>{'crow', 'dog', 'lion'}</string>
            </property>
           </widget>
-          <widget class="QLabel" name="console_4">
+          <widget class="QLabel" name="console_36">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -9038,13 +8308,13 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </widget>
-         <widget class="QLabel" name="text_createvar_15">
+         <widget class="QLabel" name="text_createvar_10">
           <property name="geometry">
            <rect>
             <x>10</x>
             <y>0</y>
-            <width>751</width>
-            <height>101</height>
+            <width>741</width>
+            <height>31</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -9053,29 +8323,32 @@ p, li { white-space: pre-wrap; }
 }</string>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Также можно выводить значения переменной, если поместить&lt;br/&gt;название переменной внутри круглых скобок команды &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;print&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Создайте переменную с именем &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;name&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; со значением&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt; &amp;quot;Hello, Qt!&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; и выведите её&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Сначала добавьте во множество 'crow', а потом удалите 'cat'&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
-         <widget class="QTextEdit" name="answer_edit_createvar_9">
+         <widget class="QProgressBar" name="progress_set_3">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>150</y>
+            <y>590</y>
             <width>771</width>
-            <height>71</height>
+            <height>20</height>
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">QTextEdit {
-	color: white;
-	background: rgb(29,32,51);
-	border: 0 0 0 0;
-	font-weight: bold;
-	font-size: 16px;
+           <string notr="true">QProgressBar {
+	background-color: rgb(36,39,70);
+     border: 1px solid rgb(36,39,70);
 }</string>
           </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
          </widget>
-         <widget class="QFrame" name="frame_continue_34">
+         <widget class="QFrame" name="frame_continue_37">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -9095,7 +8368,7 @@ p, li { white-space: pre-wrap; }
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <widget class="QPushButton" name="continue_createvar_btn_15">
+          <widget class="QPushButton" name="continue_set_btn_6">
            <property name="geometry">
             <rect>
              <x>10</x>
@@ -9118,28 +8391,6 @@ p, li { white-space: pre-wrap; }
             <string>Проверить</string>
            </property>
           </widget>
-         </widget>
-         <widget class="QProgressBar" name="progress_createvar_9">
-          <property name="geometry">
-           <rect>
-            <x>-10</x>
-            <y>590</y>
-            <width>781</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QProgressBar {
-	background-color: rgb(36,39,70);
-     border: 1px solid rgb(36,39,70);
-}</string>
-          </property>
-          <property name="value">
-           <number>0</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
          </widget>
         </widget>
        </widget>
