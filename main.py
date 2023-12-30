@@ -23,7 +23,7 @@ class PythonExecutor:
             return output_buffer.getvalue()
 
 
-class Mimo(QMainWindow):
+class App(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('project.ui', self)
@@ -62,7 +62,7 @@ class Mimo(QMainWindow):
         conn.close()
 
     def initUI(self):
-        self.setWindowTitle('Mimo')
+        self.setWindowTitle('App')
         self.update_data()
         self.connect_buttons()
         self.connect_text_changed_signals()
@@ -1012,6 +1012,6 @@ class Mimo(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Mimo()
+    ex = App()
     ex.show()
     sys.exit(app.exec_())
