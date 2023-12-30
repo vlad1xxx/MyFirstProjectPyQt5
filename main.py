@@ -912,7 +912,7 @@ class App(QMainWindow):
     # Если у пользователя меньше 5 жизней запускается таймер на их восстановление
     def update_hp_timer(self):
         self.timer_hp = QTimer(self)
-        self.timer_hp.singleShot(60000, self.update_count_hp)
+        self.timer_hp.singleShot(3600000, self.update_count_hp)
 
     def update_count_hp(self):
         if self.count_heart < 5:
