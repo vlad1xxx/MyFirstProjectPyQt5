@@ -58,11 +58,11 @@ class RegistrationForm(QDialog):
                     "coins" INTEGER DEFAULT 0,
                     "xp"    INTEGER DEFAULT 0,
                     "errors"    INTEGER DEFAULT 0,
-                    "num_btn"	INTEGER DEFAULT 0,
-                    "cond_btn"	INTEGER DEFAULT 0,
-                    "loop_btn"	INTEGER DEFAULT 0,
-                    "str_btn"	INTEGER DEFAULT 0,
-                    "set_btn"	INTEGER DEFAULT 0,
+                    "num_btn"	INTEGER DEFAULT 1,
+                    "cond_btn"	INTEGER DEFAULT 1,
+                    "loop_btn"	INTEGER DEFAULT 1,
+                    "str_btn"	INTEGER DEFAULT 1,
+                    "set_btn"	INTEGER DEFAULT 1,
                     "last_enter_time" INTEGER
                 )
             ''')

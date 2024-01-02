@@ -10,6 +10,7 @@ from PyQt5.QtGui import QFontMetrics
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 
 from dialogs import RegistrationForm, EnterForm, ChooseThemeForm, PEP8
+import tests
 
 
 class PythonExecutor:
@@ -19,7 +20,7 @@ class PythonExecutor:
             try:
                 exec(code)
             except Exception as e:
-                return f"Error: {e}"
+                return f'Error: {e}'
             return output_buffer.getvalue()
 
 
@@ -112,7 +113,7 @@ class App(QMainWindow):
             themes_mapping = {
                 'Создание переменных': (0, self.tasks_createvar, 0),
                 'Работа с числами': (1, self.tasks_num, 0),
-                'Условные операторы': (2, self.tasks_cond, 0),
+                'Условный оператор': (2, self.tasks_cond, 0),
                 'Циклы': (3, self.tasks_loop, 0),
                 'Работа со строками': (4, self.tasks_str, 0),
                 'Множества': (5, self.tasks_set, 0)
@@ -149,8 +150,7 @@ class App(QMainWindow):
 
     # Проверка ответа
     def check_answer_createvar_1(self):
-        if (self.answer_edit_createvar_1.text() == 'car = "Porsche"'
-                or self.answer_edit_createvar_1.text() == "car = 'Porsche'"):
+        if tests.test_createvar_1(self.answer_edit_createvar_1.text()):
             self.continue_createvar_btn_4.setText('Продолжить')
             self.continue_createvar_btn_4.clicked.connect(self.next_page_createvar)
             self.xp += 25
@@ -177,8 +177,7 @@ class App(QMainWindow):
 
     # Проверка ответа
     def check_answer_createvar_3(self):
-        if self.answer_edit_createvar_4.toPlainText() == 'name = "Hello, Qt!"\nprint(name)' \
-                or self.answer_edit_createvar_4.toPlainText() == "name = 'Hello, Qt!'\nprint(name)":
+        if tests.test_createvar_2(self.answer_edit_createvar_4.toPlainText()):
             self.continue_createvar_btn_6.setText('Завершить')
             self.continue_createvar_btn_6.clicked.connect(self.open_num_btn)
             self.xp += 25
@@ -306,7 +305,7 @@ class App(QMainWindow):
 
     # Проверка ответа
     def check_answer_num_6(self):
-        if self.answer_edit_num_6.text() == 'private + public' or self.answer_edit_num_6.text() == 'public + private':
+        if tests.test_num_1(self.answer_edit_num_6.text()):
             self.continue_num_btn_6.setText('Завершить')
             self.continue_num_btn_6.clicked.connect(self.open_cond_btn)
             self.xp += 25
@@ -496,8 +495,7 @@ class App(QMainWindow):
 
     # Проверка ответа
     def check_answer_loop_2(self):
-        if (self.answer_edit_loop_2.text() == 'while num != 8:' or self.answer_edit_loop_2.text() == 'while num < 8:'
-                or self.answer_edit_loop_2.text() == 'while num <= 7:'):
+        if tests.test_loop_1(self.answer_edit_loop_2.text()):
             self.continue_loop_btn_2.setText('Продолжить')
             self.continue_loop_btn_2.clicked.connect(self.next_page_loop)
             self.frame_console_20.show()
@@ -525,7 +523,7 @@ class App(QMainWindow):
 
     # Проверка ответа
     def check_answer_loop_4(self):
-        if self.answer_edit_loop_4.text() == 'for i in range(5):':
+        if tests.test_loop_2(self.answer_edit_loop_4.text()):
             self.continue_loop_btn_4.setText('Завершить')
             self.continue_loop_btn_4.clicked.connect(self.open_str_btn)
             self.frame_console_15.show()
@@ -605,7 +603,7 @@ class App(QMainWindow):
         self.start_progress_bar()
 
     def check_answer_str_4(self):
-        if self.answer_edit_str_3.text() == '[7:10]':
+        if tests.test_str_1(self.answer_edit_str_3.text()):
             self.continue_str_btn_5.setText('Продолжить')
             self.continue_str_btn_5.clicked.connect(self.next_page_str)
             self.frame_console_29.show()
@@ -680,10 +678,7 @@ class App(QMainWindow):
         self.start_progress_bar()
 
     def check_answer_set_3(self):
-        if ((self.answer_edit_set_1.text() == '.add("crow")' or self.answer_edit_set_1.text() == ".add('crow')") and
-                (self.answer_edit_set_2.text() == '.remove("cat")' or self.answer_edit_set_2.text() == ".remove('cat')"
-                 or self.answer_edit_set_2.text() == '.discard("cat")'
-                 or self.answer_edit_set_2.text() == ".discard('cat')")):
+        if tests.test_str_1(self.answer_edit_set_1.text(), self.answer_edit_set_2.text()):
             self.continue_set_btn_6.setText('Завершить')
             self.continue_set_btn_6.clicked.connect(self.restart_set)
             self.frame_console_33.show()
@@ -796,6 +791,7 @@ class App(QMainWindow):
     # Запуск кода
     def run_code(self):
         code = self.text_edit.toPlainText()
+        print(code)
         result = PythonExecutor.execute(code)
         self.output_edit.clear()
         self.output_edit.setPlainText(result)
@@ -883,9 +879,8 @@ class App(QMainWindow):
                 self.count_heart += int(elapsed_hours)
         except TypeError:
             pass
-        conn.close()
 
-        # Обновление времени
+        # Обновление времени в дб
         cur.execute('''
                     UPDATE users SET last_enter_time = ? WHERE id = ?
                 ''', [datetime.now().timestamp(), self.id])
